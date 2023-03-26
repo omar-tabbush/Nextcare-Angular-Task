@@ -1,0 +1,32 @@
+.claim-form {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .claim-form h2 {
+    text-align: center;
+  }
+  
+  .claim-form table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+  }
+  
+  .claim-form td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .claim-form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .claim-form input[type="radio"] {
+    margin-right: 6px;
+  }
+  

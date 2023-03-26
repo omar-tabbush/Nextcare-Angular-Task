@@ -1,0 +1,27 @@
+Form styling
+.form-group label {
+    font-weight: bold;
+  }
+  .form-control {
+    border-radius: 0;
+  }
+  .btn-primary {
+    border-radius: 0;
+  }
+  
+  /* Table styling */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  table td,
+  table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  table th {
+    background-color: grey;
+    padding: 8px;
+    text-align: center;
+  }  

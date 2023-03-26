@@ -1,0 +1,86 @@
+<form class="p-4">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="insured-card-number">Insured Card Number:</label>
+        <input type="text" class="form-control" id="insured-card-number" />
+      </div>
+      <div class="form-group">
+        <label for="insured-name">Insured Name:</label>
+        <input type="text" class="form-control" id="insured-name" />
+      </div>
+      <div class="form-group">
+        <label for="dob">DOB:</label>
+        <input type="text" class="form-control" id="dob" />
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select class="form-control" id="gender">
+          <option value="F">F</option>
+          <option value="M">M</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="hospital">Hospital:</label>
+        <input type="text" class="form-control" id="hospital" />
+      </div>
+    </div>
+    <div class="col-sm-6">
+     
+      <div class="form-group">
+        <label for="admission-date">Admission Date:</label>
+        <input type="text" class="form-control" id="admission-date" />
+      </div>
+      <div class="form-group">
+        <label for="medical-case">Medical Case:</label>
+        <input type="text" class="form-control" id="medical-case" />
+      </div>
+      <div class="form-group">
+        <label for="estimated-cost">Estimated Cost (USD):</label>
+        <input type="text" class="form-control" id="estimated-cost" />
+      </div>
+      <div class="form-group">
+        <label for="treating-physician">Treating Physician:</label>
+        <input type="text" class="form-control" id="treating-physician" />
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="status"
+            id="status-covered"
+            value="covered"
+          />
+          <label class="form-check-label" for="status-covered"> Covered </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="status"
+            id="status-not-covered"
+            value="not-covered"
+          />
+          <label class="form-check-label" for="status-not-covered">
+            Not Covered
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="status"
+            id="status-pending"
+            value="pending"
+          />
+          <label class="form-check-label" for="status-pending"> Pending </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row p-5">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
