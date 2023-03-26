@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WeatherService } from '../weather.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class WeatherHeaderComponent implements OnInit {
   weatherData: any;
   lat: number = 0;
   lon: number = 0;
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, private router: Router) {}
   ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
       this.weatherService
@@ -20,5 +21,18 @@ export class WeatherHeaderComponent implements OnInit {
           console.log(this.weatherData);
         });
     });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn() {
+    const token: string | null =
+      (localStorage.getItem('token') as string) || null;
+    if (token) {
+      return true;
+    } else return false;
   }
 }

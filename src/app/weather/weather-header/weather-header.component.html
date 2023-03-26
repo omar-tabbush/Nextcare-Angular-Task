@@ -1,19 +1,29 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+    <img
+      width="200px"
+      src="https://www.nextcarehealth.com/wp-content/uploads/2021/06/logo.svg"
+      alt="Nextcare logo"
+      class="img-fluid mb-3 m-auto"
+    />
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="'claim'">Claim Center</a>
-      <a class="navbar-brand" [routerLink]="'search'">Search Center</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div  id="navbarNav" class="collapse navbar-collapse justify-content-start" >
+        <a class="navbar-brand" *ngIf="isLoggedIn()" (click)="logout()">logout</a>
+        
+        <a class="navbar-brand" [routerLink]="'claim'">Claim Center</a>
+        <a class="navbar-brand" [routerLink]="'search'">Search Center</a>
+      </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="navbar-text">
           <span>{{ weatherData?.name }}</span>
