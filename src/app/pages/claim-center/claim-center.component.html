@@ -9,6 +9,26 @@
           id="insured-card-number"
           formControlName="insured_card_number"
         />
+        <div
+          *ngIf="
+            claim.controls['insured_card_number']?.invalid &&
+            (claim.controls['insured_card_number']?.dirty ||
+              claim.controls['insured_card_number']?.touched)
+          "
+        >
+          <p
+            *ngIf="claim.controls['insured_card_number']?.errors?.['required'] || claim.controls['insured_card_number']?.errors?.['pattern']"
+          >
+            <span
+              *ngIf="claim.controls['insured_card_number']?.errors?.['pattern']"
+              >insured_card_number should be 15 characters and 1 digit</span
+            >
+            <span
+              *ngIf="claim.controls['insured_card_number']?.errors?.['required']"
+              >insured_card_number is required</span
+            >
+          </p>
+        </div>
       </div>
       <div class="form-group">
         <label for="insured-name">Insured Name:</label>
@@ -18,6 +38,19 @@
           id="insured-name"
           formControlName="insured_name"
         />
+        <div
+          *ngIf="
+            claim.controls['insured_name']?.invalid &&
+            (claim.controls['insured_name']?.dirty ||
+              claim.controls['insured_name']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['insured_name']?.errors?.['required']">
+            <span *ngIf="claim.controls['insured_name']?.errors?.['required']"
+              >insured_name is required</span
+            >
+          </p>
+        </div>
       </div>
       <div class="form-group">
         <label for="dob">DOB:</label>
@@ -27,6 +60,18 @@
           id="dob"
           formControlName="dob"
         />
+        <div
+          *ngIf="
+            claim.controls['dob']?.invalid &&
+            (claim.controls['dob']?.dirty || claim.controls['dob']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['dob']?.errors?.['required']">
+            <span *ngIf="claim.controls['dob']?.errors?.['required']"
+              >date of birth is required</span
+            >
+          </p>
+        </div>
       </div>
       <div class="form-group">
         <label for="gender">Gender:</label>
@@ -43,6 +88,19 @@
           id="hospital"
           formControlName="hospital"
         />
+        <div
+          *ngIf="
+            claim.controls['hospital']?.invalid &&
+            (claim.controls['hospital']?.dirty ||
+              claim.controls['hospital']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['hospital']?.errors?.['required']">
+            <span *ngIf="claim.controls['hospital']?.errors?.['required']"
+              >hospital name is required</span
+            >
+          </p>
+        </div>
       </div>
     </div>
     <div class="col-sm-6">
@@ -54,6 +112,19 @@
           id="admission-date"
           formControlName="admission_date"
         />
+        <div
+          *ngIf="
+            claim.controls['admission_date']?.invalid &&
+            (claim.controls['admission_date']?.dirty ||
+              claim.controls['admission_date']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['admission_date']?.errors?.['required']">
+            <span *ngIf="claim.controls['admission_date']?.errors?.['required']"
+              >admission_date is required</span
+            >
+          </p>
+        </div>
       </div>
       <div class="form-group">
         <label for="medical-case">Medical Case:</label>
@@ -62,6 +133,19 @@
           id="medical-case"
           formControlName="medical_case"
         ></textarea>
+        <div
+          *ngIf="
+            claim.controls['medica_case']?.invalid &&
+            (claim.controls['medica_case']?.dirty ||
+              claim.controls['medica_case']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['medica_case']?.errors?.['required']">
+            <span *ngIf="claim.controls['medica_case']?.errors?.['required']"
+              >medica_case is required</span
+            >
+          </p>
+        </div>
       </div>
       <div class="form-group">
         <label for="estimated-cost">Estimated Cost (USD):</label>
@@ -71,6 +155,19 @@
           id="estimated-cost"
           formControlName="estimated_cost"
         />
+        <div
+          *ngIf="
+            claim.controls['estimated_cost']?.invalid &&
+            (claim.controls['estimated_cost']?.dirty ||
+              claim.controls['estimated_cost']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['estimated_cost']?.errors?.['required']">
+            <span *ngIf="claim.controls['estimated_cost']?.errors?.['required']"
+              >estimated_cost is required</span
+            >
+          </p>
+        </div>
       </div>
 
       <div class="form-group">
@@ -84,6 +181,20 @@
           <option value="Dr. Johnson">Dr. Johnson</option>
           <option value="Dr. Patel">Dr. Patel</option>
         </select>
+        <div
+          *ngIf="
+            claim.controls['treating_physician']?.invalid &&
+            (claim.controls['treating_physician']?.dirty ||
+              claim.controls['treating_physician']?.touched)
+          "
+        >
+          <p *ngIf="claim.controls['treating_physician']?.errors?.['required']">
+            <span
+              *ngIf="claim.controls['treating_physician']?.errors?.['required']"
+              >treating_physician is required</span
+            >
+          </p>
+        </div>
       </div>
       <div class="form-group">
         <label for="status">Status:</label>
@@ -96,7 +207,10 @@
             value="Rejected"
             formControlName="status"
           />
-          <label class="form-check-label" for="status-Rejected"> Rejected </label>
+
+          <label class="form-check-label" for="status-Rejected">
+            Rejected
+          </label>
         </div>
         <div class="form-check">
           <input
@@ -107,6 +221,7 @@
             value="Approved"
             formControlName="status"
           />
+
           <label class="form-check-label" for="status-Approved">
             Approved
           </label>
@@ -121,6 +236,19 @@
             formControlName="status"
           />
           <label class="form-check-label" for="status-Pending"> Pending </label>
+          <div
+            *ngIf="
+              claim.controls['status']?.invalid &&
+              (claim.controls['status']?.dirty ||
+                claim.controls['status']?.touched)
+            "
+          >
+            <p *ngIf="claim.controls['status']?.errors?.['required']">
+              <span *ngIf="claim.controls['status']?.errors?.['required']"
+                >status is required</span
+              >
+            </p>
+          </div>
         </div>
         <div class="form-group">
           <label for="remarks">remarks:</label>
