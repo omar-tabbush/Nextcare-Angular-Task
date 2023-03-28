@@ -16,6 +16,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { EditClaimComponent } from './pages/edit-claim/edit-claim.component';
 import { ApplicationService } from './application.service';
 import { CommonModule } from '@angular/common';
+import { CsvModule } from '@ctrl/ngx-csv';
+import { StringifyPipe } from './pipes/stringify.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { CommonModule } from '@angular/common';
     NotFoundComponent,
     LoginComponent,
     EditClaimComponent,
+    StringifyPipe,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    CsvModule
+
   ],
   providers: [
     {

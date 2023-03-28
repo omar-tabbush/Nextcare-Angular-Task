@@ -42,7 +42,22 @@
       </form>
     </div>
     <div class="col-md-12 overflow-scroll">
-      <table class="table">
+      <button
+        (click)="downloadPDF()"
+        type="button"
+        class="btn btn-primary m-1 mt-3"
+      >
+        export as pdf
+      </button>
+      <a
+        csvLink
+        [data]="claims | stringify"
+        type="button"
+        class="btn btn-primary m-1 mt-3"
+      >
+        export as csv
+      </a>
+      <table id="thetable" class="table" #thetable>
         <thead>
           <tr>
             <th>Admission Date</th>
@@ -64,14 +79,14 @@
             <td>{{ item.insured_name }}</td>
             <td>{{ item.hospital }}</td>
             <td>{{ item.medical_case }}</td>
-            <td>{{ item.estimated_cost | currency }}</td>
+            <td>{{ +item.estimated_cost | currency }}</td>
             <td>{{ item.status }}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr class="last-row">
             <th colspan="5" class="text-right">Total:</th>
-            <td>{{ total | currency }}</td>
+            <td>{{ +total | currency }}</td>
             <td>{{ statuses }}</td>
           </tr>
         </tfoot>

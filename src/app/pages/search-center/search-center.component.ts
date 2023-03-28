@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
+import jsPDF from 'jspdf';
+// import { Router } from '@angular/router';
 import { ApplicationService } from 'src/app/application.service';
 import { Claim } from 'src/app/types/claim';
 
@@ -16,7 +18,7 @@ export class SearchCenterComponent implements OnInit {
     fromDate: new FormControl(''),
     toDate: new FormControl(''),
   });
-  claims!: Array<Claim>;
+  claims!: Array<Claim> ;
   total: any;
   statuses: any;
 
@@ -32,6 +34,8 @@ export class SearchCenterComponent implements OnInit {
         this.total = this.getTotals();
         this.statuses = this.getStatusString();
       });
+
+    
   }
 
   onSearch() {
@@ -71,5 +75,38 @@ export class SearchCenterComponent implements OnInit {
     ).length;
     const pending = this.claims.filter((obj) => obj.status == 'Pending').length;
     return `${this.claims.length} (${covered} Covered, ${notCovered} Not Covered, ${pending} Pending)`;
+  }
+
+  public downloadPDF() {
+    const doc = new jsPDF('landscape');
+
+    const claimsAsStrings: { [key: string]: string }[] = this.claims.map(
+      (claim) => {
+        return {
+          insured_card_number: claim.insured_card_number || ' ',
+          insured_name: claim.insured_name || ' ',
+          dob: claim.dob || ' ',
+          gender: claim.gender || ' ',
+          hospital: claim.hospital || ' ',
+          admission_date: claim.admission_date || ' ',
+          medical_case: claim.medical_case || ' ',
+          estimated_cost: claim.estimated_cost || ' ',
+          treating_physician: claim.treating_physician || ' ',
+          status: claim.status || ' ',
+          remarks: claim.remarks || ' ',
+        };
+      }
+    );
+    console.log(claimsAsStrings);
+    console.log(Object.keys(claimsAsStrings[0]));
+
+    doc.table(2, 2, claimsAsStrings, [...Object.keys(claimsAsStrings[0])], {
+      autoSize: true,
+      fontSize: 7,
+    });
+    doc.save('table.pdf');
+  }
+  stringify(obj:any){
+    return JSON.stringify(obj || " claims not found");
   }
 }
