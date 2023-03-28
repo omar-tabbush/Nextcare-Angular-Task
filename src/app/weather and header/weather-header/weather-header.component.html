@@ -19,7 +19,7 @@
     </button>
     <div class="container-fluid">
       <div  id="navbarNav" class="collapse navbar-collapse justify-content-start" >
-        <a class="navbar-brand" *ngIf="isLoggedIn()" (click)="logout()">logout</a>
+        <a class="navbar-brand" *ngIf="isLoggedIn()" [routerLink]="'/login'" (click)="logout()">logout</a>
         
         <a class="navbar-brand" [routerLink]="'claim'">Claim Center</a>
         <a class="navbar-brand" [routerLink]="'search'">Search Center</a>

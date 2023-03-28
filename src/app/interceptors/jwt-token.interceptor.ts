@@ -17,7 +17,7 @@ export class JwtTokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem('token');
     if (token) {
-      if (request.url.includes('https://api.openweathermap.org/data/2.5'))
+      if (request.url.includes('https://api.openweathermap.org/data/2.5') || request.url.includes('https://omar-scandiweb-task.000webhostapp') )
         return next.handle(request);
       request = request.clone({
         setHeaders: {

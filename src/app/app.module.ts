@@ -2,17 +2,20 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WeatherModule } from './weather/weather.module';
+import { WeatherModule } from './weather and header/weather.module';
 import { ClaimCenterComponent } from './pages/claim-center/claim-center.component';
 import { SearchCenterComponent } from './pages/search-center/search-center.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtTokenInterceptor } from './interceptors/jwt-token.interceptor';
 import { AuthService } from './auth/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
+import { EditClaimComponent } from './pages/edit-claim/edit-claim.component';
+import { ApplicationService } from './application.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { AuthGuard } from './auth/auth.guard';
     SearchCenterComponent,
     NotFoundComponent,
     LoginComponent,
+    EditClaimComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { AuthGuard } from './auth/auth.guard';
     WeatherModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule     
+    ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule,
   ],
   providers: [
     {
@@ -37,7 +43,8 @@ import { AuthGuard } from './auth/auth.guard';
       multi: true,
     },
     AuthService,
-    AuthGuard
+    AuthGuard,
+    ApplicationService
   ],
   bootstrap: [AppComponent],
 })
