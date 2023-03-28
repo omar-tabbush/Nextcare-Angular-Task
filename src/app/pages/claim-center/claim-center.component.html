@@ -87,6 +87,7 @@
           class="form-control"
           id="hospital"
           formControlName="hospital"
+          required
         />
         <div
           *ngIf="
@@ -110,6 +111,7 @@
           type="date"
           class="form-control"
           id="admission-date"
+          required
           formControlName="admission_date"
         />
         <div
@@ -152,6 +154,7 @@
         <input
           type="number"
           class="form-control"
+          required
           id="estimated-cost"
           formControlName="estimated_cost"
         />
@@ -174,6 +177,7 @@
         <label for="treating-physician">Treating Physician:</label>
         <select
           class="form-control"
+          required
           id="treating-physician"
           formControlName="treating_physician"
         >
