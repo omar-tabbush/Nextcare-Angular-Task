@@ -1,8 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
 import jsPDF from 'jspdf';
-// import { Router } from '@angular/router';
 import { ApplicationService } from 'src/app/application.service';
 import { Claim } from 'src/app/types/claim';
 
