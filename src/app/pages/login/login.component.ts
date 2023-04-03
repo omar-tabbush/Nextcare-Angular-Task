@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -9,13 +9,18 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   isSubmitted = false;
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
   constructor(private auth: AuthService, private router: Router) {}
+  ngOnInit(): void {
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate(['/claim/search']);
+    }
+  }
   invalid() {
     this.isSubmitted = true;
   }
@@ -30,9 +35,8 @@ export class LoginComponent {
       .subscribe((resp: any) => {
         if (resp instanceof HttpResponse) {
           localStorage.setItem('token', resp.body.token);
-          console.log(resp);
         } else localStorage.setItem('token', resp.token);
-        this.router.navigate(['/claim']);
+        this.router.navigate(['/claim/search']);
       });
     // reset the form
     this.loginForm.reset();

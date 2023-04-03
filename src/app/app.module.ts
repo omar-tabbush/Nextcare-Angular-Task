@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherModule } from './weather and header/weather.module';
-import { ClaimCenterComponent } from './pages/claim-center/claim-center.component';
-import { SearchCenterComponent } from './pages/search-center/search-center.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,21 +11,15 @@ import { AuthService } from './auth/auth.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
-import { EditClaimComponent } from './pages/edit-claim/edit-claim.component';
 import { ApplicationService } from './application.service';
 import { CommonModule } from '@angular/common';
 import { CsvModule } from '@ctrl/ngx-csv';
-import { StringifyPipe } from './pipes/stringify.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClaimCenterComponent,
-    SearchCenterComponent,
     NotFoundComponent,
     LoginComponent,
-    EditClaimComponent,
-    StringifyPipe,
   ],
   imports: [
     BrowserModule,
@@ -52,5 +44,6 @@ import { StringifyPipe } from './pipes/stringify.pipe';
     ApplicationService
   ],
   bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule {}
