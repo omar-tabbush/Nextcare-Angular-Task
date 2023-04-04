@@ -19,10 +19,12 @@ export class SearchCenterComponent implements OnInit {
   claims!: Array<Claim> ;
   total: any;
   statuses: any;
-
+  loading = false;
+  table_loading = false;
   constructor(private app: ApplicationService) {}
 
   ngOnInit(): void {
+    this.table_loading = true;
     this.app
       .getClaims()
       .subscribe((data) => {
@@ -31,14 +33,14 @@ export class SearchCenterComponent implements OnInit {
       .add(() => {
         this.total = this.getTotals();
         this.statuses = this.getStatusString();
+        this.table_loading = false;
       });
 
     
   }
 
   onSearch() {
-    console.log(this.searchForm.value);
-
+    this.loading = true;
     this.app
       .searchClaims(
         this.searchForm.value.fromDate as string,
@@ -53,6 +55,7 @@ export class SearchCenterComponent implements OnInit {
       .add(() => {
         this.total = this.getTotals();
         this.statuses = this.getStatusString();
+        this.loading = false;
       });
   }
 

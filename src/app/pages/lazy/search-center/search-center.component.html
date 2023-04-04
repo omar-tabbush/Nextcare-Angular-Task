@@ -38,7 +38,12 @@
             id="hospital"
           />
         </div>
-        <button type="submit" class="btn btn-primary m-1 mt-3">Search</button>
+        <button type="submit" class="btn btn-primary m-1 mt-3">
+          Search
+          <div *ngIf="loading" class="spinner-border" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </button>
       </form>
     </div>
     <div class="col-md-12 overflow-scroll">
@@ -58,6 +63,9 @@
         export as csv
       </a>
       <table id="thetable" class="table" #thetable>
+        <div *ngIf="table_loading" class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
         <thead>
           <tr>
             <th>Admission Date</th>

@@ -11,15 +11,20 @@ export class WeatherHeaderComponent implements OnInit {
   weatherData: any;
   lat: number = 0;
   lon: number = 0;
+  loading = false;
   constructor(private weatherService: WeatherService, private router: Router) {}
   ngOnInit() {
+    this.loading = true;
     navigator.geolocation.getCurrentPosition((position) => {
       this.weatherService
         .getWeatherData(+position.coords.latitude, +position.coords.longitude)
         .subscribe((data) => {
           this.weatherData = data;
           console.log(this.weatherData);
-        });
+        }).add(() => {
+          this.loading = false;
+        }
+        );
     });
   }
 

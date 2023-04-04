@@ -11,6 +11,7 @@ import { Claim } from 'src/app/types/claim';
 })
 export class EditClaimComponent {
   claim!: FormGroup;
+  loading = false;
   constructor(private app: ApplicationService, private route: ActivatedRoute , private router: Router) {}
 
   ngOnInit() {
@@ -50,12 +51,15 @@ export class EditClaimComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     this.app
       .updateClaim(this.claim.value as Claim, this.claim.value.objectId)
       .subscribe((data) => {
         console.log(data);
+      }).add(() => {
+        this.loading = false;
+        this.router.navigate([`/claim/search`]);
       });
-      this.router.navigate([`/search`]);
 
   }
 }

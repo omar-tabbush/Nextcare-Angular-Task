@@ -266,6 +266,11 @@
     </div>
   </div>
   <div class="row p-5">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">
+      Submit
+      <div *ngIf="loading" class="spinner-border" role="status">
+        <span  class="sr-only"></span>
+      </div>
+    </button>
   </div>
 </form>

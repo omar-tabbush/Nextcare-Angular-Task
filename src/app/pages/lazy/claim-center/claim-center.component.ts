@@ -10,7 +10,7 @@ import { Claim } from 'src/app/types/claim';
 })
 export class ClaimCenterComponent implements OnInit {
   claim!: FormGroup;
-  isSubmitted = false;
+  loading = false
   constructor(private app: ApplicationService) {}
 
   ngOnInit() {
@@ -41,11 +41,11 @@ export class ClaimCenterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.claim);
+    this.loading = true;
     this.app.addClaim(this.claim.value as Claim).subscribe((data) => {
     }).add(() => {
       this.claim.reset();
-      this.isSubmitted = true;
+      this.loading = false;
     })
   }
 }

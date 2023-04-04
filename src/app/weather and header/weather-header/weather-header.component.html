@@ -25,7 +25,10 @@
         <a class="navbar-brand" [routerLink]="'/claim/search'">Search Center</a>
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div class="navbar-text">
+        <div *ngIf="loading" class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div *ngIf="!loading" class="navbar-text">
           <span>{{ weatherData?.name }}</span>
           <img
             src="http://openweathermap.org/img/w/{{ weatherData?.weather?.[0]?.icon }}.png"
